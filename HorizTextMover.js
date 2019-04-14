@@ -14,6 +14,7 @@ class HorizTextMover {
             newText += " "
         }
         console.log(`${newText}${this.text}`)
+        this.total++
     }
 
     stop() {
@@ -24,11 +25,11 @@ class HorizTextMover {
         animator.start(() => {
             this.animateText()
         }, () => {
-            this.stop()
+            return this.stop()
         })
     }
 
-    static create(text, y) {
+    static create(text, by) {
         const htm = new HorizTextMover(text, by)
         htm.start()
     }
